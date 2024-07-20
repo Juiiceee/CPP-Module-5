@@ -7,6 +7,7 @@ Bureaucrat::Bureaucrat() : _name("zeubi"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
+	std::cout << "Bureaucrat constructor called\n";
 	this->setGrade(grade);
 }
 
@@ -22,7 +23,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
 	std::cout << "Copy assignment operator called\n";
 	if (this != &obj)
 	{
-		
+		this->_grade = obj._grade;
 	}
 	return *this;
 }
@@ -35,7 +36,7 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const &obj)
 
 Bureaucrat::~Bureaucrat()
 {
-	
+	std::cout << "Destructor called " << this->getName() << "\n";
 }
 
 const std::string	Bureaucrat::getName() const
