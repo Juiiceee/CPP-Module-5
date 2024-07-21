@@ -55,6 +55,10 @@ int main()
 	{
 		feunouille.increment();
 	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cout << e.what();
