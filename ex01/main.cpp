@@ -5,14 +5,80 @@
 
 int main()
 {
-	/*try
-	{*/
-		Form salut("feur doc", 120, 20);
-		std::cout << salut;
-	//}
-	/*catch (Form::GradeTooHighException &e)
+	try
+	{
+		Form salut("feur doc", 160, 20);
+	}
+	catch (Form::GradeTooLowException &e)
 	{
 		std::cout << e.what();
-	}*/
+	}
+	try
+	{
+		Form salut("feur doc", 150, 160);
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+	}
 	std::cout << "__________________________________________________________________________________________________\n";
+	try
+	{
+		Form salut("feur doc", 160, 160);
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << "__________________________________________________________________________________________________\n";
+	try
+	{
+		Form salut("feur doc", 0, 20);
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << e.what();
+	}
+	try
+	{
+		Form salut("feur doc", 150, 0);
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << "__________________________________________________________________________________________________\n";
+	try
+	{
+		Form salut("feur doc", 0, 0);
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << "__________________________________________________________________________________________________\n";
+	Bureaucrat bubu("Jaja", 12);
+	Form form("feur doc", 10, 150);
+	std::cout << form;
+	try
+	{
+		form.beSigned(bubu);
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << form;
+	std::cout << "__________________________________________________________________________________________________\n";
+	bubu.increment();
+	bubu.increment();
+	try
+	{
+		form.beSigned(bubu);
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << form;
 }

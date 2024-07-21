@@ -23,7 +23,7 @@ public:
 	int getGradeSign() const;
 	int getGradeExec() const;
 	bool getIsSigned() const;
-	//void beSigned(const Bureaucrat &bureau);
+	void beSigned(const Bureaucrat &bureau);
 
 	class Exception : public std::exception
 	{

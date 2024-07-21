@@ -30,7 +30,7 @@ Form &Form::operator=(const Form &obj)
 
 std::ostream& operator<<(std::ostream &os, const Form &obj)
 {
-	os << "The " << obj.getName() << " form, has a minimum grade to sign for " << obj.getGradeSign() << " and to execute for " << obj.getGradeExec() << "and its signature state is " << obj.getIsSigned() << std::endl;
+	os << "The " << obj.getName() << " form, has a minimum grade to sign for " << obj.getGradeSign() << " and to execute for " << obj.getGradeExec() << " and its signature state is " << obj.getIsSigned() << std::endl;
 	return (os);
 }
 
@@ -39,10 +39,14 @@ Form::~Form()
 	std::cout << "Destructor of Form called\n";
 }
 
-/*void	beSigned(const Bureaucrat &bureau)
+void	Form::beSigned(const Bureaucrat &bureau)
 {
-
-}*/
+	if (bureau.getGrade() > this->getGradeSign())
+		throw (Form::GradeTooLowException());
+	else
+		this->_isSigned = true;
+	std::cout << bureau.getName() << " signed " << this->getName() << " Form\n";
+}
 
 const std::string Form::getName() const
 {

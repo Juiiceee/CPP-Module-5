@@ -53,16 +53,16 @@ void		Bureaucrat::increment()
 {
 	if (this->_grade - 1 < 1)
 		throw(Bureaucrat::GradeTooHighException());
-	else
-		this->_grade--;
+	this->_grade--;
+	std::cout << "Increment\n";
 }
 
 void		Bureaucrat::decrement()
 {
 	if (this->_grade + 1 > 150)
 		throw(Bureaucrat::GradeTooLowException());
-	else
-		this->_grade++;
+	this->_grade++;
+	std::cout << "Decrement\n";
 }
 
 void		Bureaucrat::setGrade(int grade)
@@ -71,8 +71,7 @@ void		Bureaucrat::setGrade(int grade)
 		throw(Bureaucrat::GradeTooHighException());
 	else if (grade > 150)
 		throw(Bureaucrat::GradeTooLowException());
-	else
-		this->_grade = grade;
+	this->_grade = grade;
 }
 
 const char* Bureaucrat::Exception::what() const throw()
