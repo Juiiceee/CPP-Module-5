@@ -75,6 +75,19 @@ void Bureaucrat::setGrade(int grade)
 	std::cout << "the grade has been defined\n";
 }
 
+void Bureaucrat::signForm(const Form &form)
+{
+	if (form.getIsSigned())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+	{
+		if (this->getGrade() < form.getGradeSign())
+			std::cout << this->getName() << " couldn’t sign " << form.getName() << " because PAS ENVIE" << std::endl;
+		else
+			std::cout << this->getName() << " couldn’t sign " << form.getName() << " because grade too higher" << std::endl;
+	}
+}
+
 const char *Bureaucrat::Exception::what() const throw()
 {
 	return ("Bureau Exception\n");

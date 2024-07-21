@@ -1,11 +1,11 @@
 #include "Form.hpp"
 
-Form::Form() : _name("Feur"), _gradeSign(150), _gradeExec(150)
+Form::Form() : _name("Feur"), _isSigned(0), _gradeSign(150), _gradeExec(150)
 {
 	std::cout << "Form default constructor called\n";
 }
 
-Form::Form(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
+Form::Form(std::string name, int gradeSign, int gradeExec) : _name(name), _isSigned(0), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
 	if (gradeSign > 150 || gradeExec > 150)
 		throw(Form::GradeTooLowException());
