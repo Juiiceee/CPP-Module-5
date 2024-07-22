@@ -25,6 +25,11 @@ AForm::AForm(std::string name, int gradeSign, int gradeExec) : _name(name), _isS
 		std::cout << "Form default constructor called\n";
 }
 
+AForm::~AForm()
+{
+	std::cout << "Destructor of Form called\n";
+}
+
 AForm::AForm(const AForm &obj) : _name(obj.getName()), _isSigned(obj.getIsSigned()), _gradeSign(obj.getGradeSign()), _gradeExec(obj.getGradeExec())
 {
 	std::cout << "Copy constructor called\n";
@@ -37,18 +42,6 @@ AForm &AForm::operator=(const AForm &obj)
 	this->_isSigned = obj._isSigned;
 	return *this;
 }
-
-std::ostream& operator<<(std::ostream &os, const AForm &obj)
-{
-	os << "The " << obj.getName() << " form, has a minimum grade to sign for " << obj.getGradeSign() << " and to execute for " << obj.getGradeExec() << " and its signature state is " << obj.getIsSigned() << std::endl;
-	return (os);
-}
-
-AForm::~AForm()
-{
-	std::cout << "Destructor of Form called\n";
-}
-
 void	AForm::beSigned(const Bureaucrat &bureau)
 {
 	if (bureau.getGrade() > this->getGradeSign())
@@ -78,15 +71,16 @@ const std::string AForm::getTarget() const
 	return (this->_target);
 }
 
-
 int AForm::getGradeExec() const
 {
 	return (this->_gradeExec);
 }
 
-const char* AForm::Exception::what() const throw()
-{
-	return ("Form Exception\n");
+void	AForm::execute(Bureaucrat const &executor) const {
+	if (executor.getGrade() > this->_gradeExec)
+		throw AForm::GradeTooLowException();
+	if (!this->_isSigned)
+		executeBehaviour();
 }
 
 const char* AForm::GradeTooHighException::what() const throw()
@@ -97,4 +91,10 @@ const char* AForm::GradeTooHighException::what() const throw()
 const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade cannot > 150\n");
+}
+
+std::ostream& operator<<(std::ostream &os, const AForm &obj)
+{
+	os << "The " << obj.getName() << " form, has a minimum grade to sign for " << obj.getGradeSign() << " and to execute for " << obj.getGradeExec() << " and its signature state is " << obj.getIsSigned() << std::endl;
+	return (os);
 }

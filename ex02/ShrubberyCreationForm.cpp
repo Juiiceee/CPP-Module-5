@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
 {
@@ -10,51 +11,40 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 	std::cout << "ShrubberyCreationForm constructor called\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &obj)
 {
-	std::cout << "Copy constructor called\n";
-	*this = obj;
-	return;
+	if (this != &obj)
+		*this = obj;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
-	std::cout << "Copy assignment operator called\n";
-	if (this != &obj)
-	{
-	}
+	if (this == &obj)
+		return *this;
 	return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+void ShrubberyCreationForm::executeBehaviour() const
 {
-	std::cout << "Destructor of ShrubberyCreationForm called\n";
-}
+	std::string filename = this->getTarget() + "_shrubbery";
+	std::ofstream file;
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor)
-{
-	if (this->getGradeExec() < executor.getGrade())
-		throw AForm::GradeTooHighException();
-	if (this->getIsSigned())
+	file.open(filename.c_str());
+	if (file.is_open())
 	{
-		std::string filename = this->getTarget() + "_shrubbery";
-		std::ofstream file;
-
-		file.open(filename.c_str());
-		if (file.is_open())
-		{
-			file << "      _-_" << std::endl;
-			file << "   /~~   ~~\\" << std::endl;
-			file << "/~~         ~~\\" << std::endl;
-			file << "{               }" << std::endl;
-			file << "\\  _-     -_  /" << std::endl;
-			file << "~  \\ //  ~" << std::endl;
-			file << "_- -   | | _- _" << std::endl;
-			file << "_ -  | |   -_" << std::endl;
-			file << "// \\" << std::endl;
-			file.close();
-		}
-		else
-			std::cerr << "impossible d'ecrire\n";
+		file << "      _-_" << std::endl;
+		file << "   /~~   ~~\\" << std::endl;
+		file << "/~~         ~~\\" << std::endl;
+		file << "{               }" << std::endl;
+		file << "\\  _-     -_  /" << std::endl;
+		file << "~  \\ //  ~" << std::endl;
+		file << "_- -   | | _- _" << std::endl;
+		file << "_ -  | |   -_" << std::endl;
+		file << "// \\" << std::endl;
+		file.close();
 	}
+	else
+		std::cerr << "impossible d'ecrire\n";
 }

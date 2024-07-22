@@ -6,9 +6,6 @@
 
 int main()
 {
-	ShrubberyCreationForm form("Feuille");
-
 	Bureaucrat bubu("gravit", 26);
-
-	form.execute(bubu);
+	ShrubberyCreationForm form;
 }
