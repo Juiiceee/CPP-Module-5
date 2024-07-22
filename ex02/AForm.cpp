@@ -88,12 +88,12 @@ void AForm::setSign(bool isSigned)
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-	return ("Grade cannot < 1\n");
+	return ("Bureaucraft grade too high.\n");
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-	return ("Grade cannot > 150\n");
+	return ("Bureaucrat grade too low.\n");
 }
 
 std::ostream& operator<<(std::ostream &os, const AForm &obj)

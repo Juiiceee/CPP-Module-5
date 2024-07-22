@@ -75,10 +75,10 @@ const char* Form::Exception::what() const throw()
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-	return ("Grade cannot < 1\n");
+	return ("Bureaucraft grade too high.\n");
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-	return ("Grade cannot > 150\n");
+	return ("Bureaucrat grade too low.\n");
 }
