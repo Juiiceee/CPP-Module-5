@@ -22,14 +22,16 @@ protected:
 
 public:
 	AForm(AForm const &obj);
-	virtual ~AForm();
 	AForm &operator=(const AForm &obj);
-	void beSigned(const Bureaucrat &bureau);
+	virtual ~AForm();
+
 	int getGradeSign() const;
 	int getGradeExec() const;
 	const std::string getName() const;
 	const std::string getTarget() const;
 	bool getIsSigned() const;
+
+	void beSigned(const Bureaucrat &bureau);
 	virtual void execute(Bureaucrat const &executor) const = 0;
 
 	class GradeTooLowException : public std::exception

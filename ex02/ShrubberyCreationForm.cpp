@@ -16,7 +16,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << "Destructor of ShrubberyCreationForm called\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : AForm(obj.getName(), obj.getGradeSign(), obj.getGradeExec(), obj.getTarget())
 {
 	std::cout << "Copy constructor called\n";
 	*this = obj;
