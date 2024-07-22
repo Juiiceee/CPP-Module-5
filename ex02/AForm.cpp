@@ -76,13 +76,6 @@ int AForm::getGradeExec() const
 	return (this->_gradeExec);
 }
 
-void	AForm::execute(Bureaucrat const &executor) const {
-	if (executor.getGrade() > this->_gradeExec)
-		throw AForm::GradeTooLowException();
-	if (!this->_isSigned)
-		executeBehaviour();
-}
-
 const char* AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade cannot < 1\n");

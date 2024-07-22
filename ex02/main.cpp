@@ -7,5 +7,7 @@
 int main()
 {
 	Bureaucrat bubu("gravit", 26);
-	ShrubberyCreationForm form;
+	ShrubberyCreationForm form("saluter");
+	form.beSigned(bubu);
+	form.execute(bubu);
 }

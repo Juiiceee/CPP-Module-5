@@ -30,8 +30,7 @@ public:
 	const std::string getName() const;
 	const std::string getTarget() const;
 	bool getIsSigned() const;
-	void execute(Bureaucrat const &executor) const;
-	virtual void executeBehaviour() const = 0;
+	virtual void execute(Bureaucrat const &executor) const = 0;
 
 	class GradeTooLowException : public std::exception
 	{
