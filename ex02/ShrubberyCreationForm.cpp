@@ -19,16 +19,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : AForm(obj.getName(), obj.getGradeSign(), obj.getGradeExec(), obj.getTarget())
 {
 	std::cout << "Copy constructor called\n";
-	*this = obj;
-	return;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
 	std::cout << "Copy assignment operator called\n";
-	if (this != &obj)
-	{
-	}
 	return *this;
 }
 

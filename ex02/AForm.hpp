@@ -10,7 +10,7 @@ class AForm
 {
 private:
 	const std::string _name;
-	const std::string _target;
+	std::string _target;
 	bool _isSigned;
 	const int _gradeSign;
 	const int _gradeExec;
@@ -30,6 +30,9 @@ public:
 	const std::string getName() const;
 	const std::string getTarget() const;
 	bool getIsSigned() const;
+
+	void setTarget(std::string target);
+	void setSign(bool isSigned);
 
 	void beSigned(const Bureaucrat &bureau);
 	virtual void execute(Bureaucrat const &executor) const = 0;

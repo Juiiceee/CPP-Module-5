@@ -47,7 +47,7 @@ void	AForm::beSigned(const Bureaucrat &bureau)
 	if (bureau.getGrade() > this->getGradeSign())
 		throw (AForm::GradeTooLowException());
 	else
-		this->_isSigned = true;
+		this->setSign(true);
 	std::cout << bureau.getName() << " signed " << this->getName() << " Form\n";
 }
 
@@ -74,6 +74,16 @@ const std::string AForm::getTarget() const
 int AForm::getGradeExec() const
 {
 	return (this->_gradeExec);
+}
+
+void AForm::setTarget(std::string target)
+{
+	this->_target = target;
+}
+
+void AForm::setSign(bool isSigned)
+{
+	this->_isSigned = isSigned;
 }
 
 const char* AForm::GradeTooHighException::what() const throw()
