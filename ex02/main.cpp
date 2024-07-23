@@ -26,6 +26,7 @@ int main()
 	}
 	RobotomyRequestForm fifourm("feurlo");
 	PresidentialPardonForm fifarm("feurlop");
+	PresidentialPardonForm fafarm("feurlup");
 	fifourm.beSigned(bubu);
 	fifourm.execute(bubu);
 	fifourm.execute(bubu);
@@ -40,4 +41,8 @@ int main()
 	}
 	fifarm.beSigned(bobo);
 	fifarm.execute(bobo);
+
+	bobo.executeForm(fifarm);
+	bubu.executeForm(fifarm);
+	bubu.executeForm(fafarm);
 }

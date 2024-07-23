@@ -88,6 +88,25 @@ void Bureaucrat::signForm(const AForm &form)
 	}
 }
 
+void Bureaucrat::executeForm(AForm const &form)
+{
+	if (!form.getIsSigned())
+	{
+		std::cout << "The form isn't signed\n";
+		return ;
+	}
+	try
+	{
+		form.execute(*this);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "The bureaucrat grade is too low\n";
+		return ;
+	}
+	std::cout << this->getName() << " executed " << form.getName() << std::endl;
+}
+
 const char *Bureaucrat::Exception::what() const throw()
 {
 	return ("Bureau Exception\n");

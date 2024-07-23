@@ -24,6 +24,7 @@ public:
 	void decrement();
 	void setGrade(int grade);
 	void signForm(const AForm &AForm);
+	void executeForm(AForm const &form);
 
 	class Exception : public std::exception
 	{
