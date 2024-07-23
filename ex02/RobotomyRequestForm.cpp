@@ -18,6 +18,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &obj)
 {
 	std::cout << "Copy assignment operator called\n";
+	if (this == &obj)
+		return *this;
 	return *this;
 }
 

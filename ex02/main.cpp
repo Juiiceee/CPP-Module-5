@@ -3,6 +3,7 @@
 #include "iostream"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
@@ -21,4 +22,8 @@ int main()
 	{
 		std::cout << e.what();
 	}
+	RobotomyRequestForm fifourm("feurlo");
+	fifourm.beSigned(bubu);
+	fifourm.execute(bubu);
+	fifourm.execute(bubu);
 }
